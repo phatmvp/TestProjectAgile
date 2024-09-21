@@ -1,0 +1,125 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f9fafc;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.purple {
+  background-color: #a28feb;
+}
+
+.pink {
+  background-color: #f393b5;
+  width: 8px;
+  height: 24px;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #000;
+}
+
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+input,
+button {
+  border-radius: 5px;
+}
+.App {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.sign-in-btn {
+  background-color: #a569bd;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 50px;
+}
+
+.text-content {
+  text-align: left;
+  max-width: 50%;
+}
+
+.text-content h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.text-content p {
+  font-size: 18px;
+  color: #777;
+  margin-top: 20px;
+}
+
+.learn-more-btn {
+  background-color: #a569bd;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+}
