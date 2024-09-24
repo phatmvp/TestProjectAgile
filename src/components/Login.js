@@ -1,8 +1,6 @@
-// src/components/Login.js
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,12 +14,41 @@ const Login = () => {
 
       // Điều hướng nếu đăng nhập thành công
       if (response.status === 200) {
-        navigate("/dashboard"); // Điều hướng đến dashboard sau khi đăng nhập thành công
+        const { accessToken, refreshToken } = response.data;
+
+        // Lưu accessToken vào localStorage/sessionStorage
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+
+        // Điều hướng đến dashboard sau khi đăng nhập thành công
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Login failed", error);
     }
   };
+
+  // Hàm tự động refresh accessToken khi hết hạn sau 1 phút
+  const refreshAccessToken = async () => {
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+      const response = await axios.post("/auth/refresh-token", {
+        refreshToken,
+      });
+
+      if (response.status === 200) {
+        const { accessToken } = response.data;
+        localStorage.setItem("accessToken", accessToken); // Cập nhật accessToken mới
+      }
+    } catch (error) {
+      console.error("Failed to refresh access token", error);
+    }
+  };
+
+  // Sử dụng setTimeout để kiểm tra và làm mới accessToken sau 1 phút
+  setTimeout(() => {
+    refreshAccessToken();
+  }, 60000); // 60000ms = 1 minute
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
